@@ -9,6 +9,8 @@ let showNames = showName(dataRyM);
 // console.log(orden);
 // let desorden = showNames.reverse();
 // console.log(desorden);
+
+
 let acum = "";
 let addDiv;
 let screen1 = document.getElementById("screen1");
@@ -26,7 +28,9 @@ let positionEnd = 0;
 pageStart.style.display = "visible";
 pageCharacteres.style.display = "none";
 btnLeft.style.display = "none";
+
     // funcion para la flecha derecha
+
     const rigth = () => {
         positionStart +=15;
         positionEnd += 15;
@@ -58,6 +62,7 @@ btnLeft.style.display = "none";
     }
     btnCharacteres.addEventListener("click", rigth);
     btnRigth.addEventListener("click", rigth);
+    
     // funcion para la flecha izquierda
     const left= () => {
         console.log("posición inicial"+positionStart, "posición final"+positionEnd)
@@ -89,6 +94,3 @@ btnLeft.style.display = "none";
         }
     }
     btnLeft.addEventListener("click", left);
-
-
-
