@@ -17,6 +17,19 @@ export const showName = (element) => {
   return listName;
 };
 
+
+// export const showOrder = (a, b) => {
+// // let sortImage = showImage();
+// // let sortName = showName();
+// // let sortImageAndName = sortImage + sortName;
+// if(a.name < b.name ){
+// return -1;
+// } else if (a.name > b.name){
+//   return 1;
+// }
+// return 0;
+// }
+
 // export const showNameAndImageSort = (element) => {
 //   let nameAndImageSort = showName().sort(element)
 //   return nameAndImageSort;

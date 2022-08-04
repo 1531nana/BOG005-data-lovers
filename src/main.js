@@ -3,12 +3,6 @@ import data from './data/rickandmorty/rickandmorty.js';
 let dataRyM = data;
 let showImages = showImage(dataRyM);
 let showNames = showName(dataRyM);
-// let nameSort = showNameAndImageSort(dataRyM);
-// console.log(nameSort);
-// let orden = showNames.sort();
-// console.log(orden);
-// let desorden = showNames.reverse();
-// console.log(desorden);
 
 
 let acum = "";

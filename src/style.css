@@ -222,12 +222,14 @@ span{
 }
 
 #nav{
-    width: 80%;
+    width: 45%;
+    padding: 15px;
 }
 #bottons_navegation  li{
     width: 150px;
 }
 #bottons_navegation  li  a{
+    padding: 5px 5px;
     height: 12px;
     font-size: 12px;
     border: 1px solid darkcyan ;
@@ -305,5 +307,5 @@ span{
 }
 
 /* medida para laptop */
-@media (max-width: 992px){
+@media screen and (min-width: 769px) and (max-width: 992px){
 }
