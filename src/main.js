@@ -146,39 +146,90 @@ btnLeft.style.display = "none";
     //             screen1.innerHTML = acum;
     //         }
     
-    //     }
-    // }
-    // btnCharacteres.addEventListener("click", rigth);
-    // btnRigth.addEventListener("click", rigth);
-    
-    // // funcion para la flecha izquierda
-    // const left= () => {
-    //     console.log("posición inicial"+positionStart, "posición final"+positionEnd)
-    //     positionStart -= 15;
-    //     positionEnd -= 15;
-    //     pageStart.style.display = "none";
-    //     pageCharacteres.style.display = "block";
-    //     screen1.style.display = "visible";
-    //     btnRigth.style.display ="block";
-    //     if(positionStart < 0 ){
-    //     positionStart = 0;
-    //     positionEnd = 15;
-    //     btnLeft.style.display = "none";
-    //     return;
-    //     } else if(positionStart >= 15){
-    //         btnLeft.style.display = "block";
-    //     }
-    //     screen1.innerHTML = "";
-    //     acum = "";
-    //     for(let i = positionStart; i < positionEnd; i++ ){
-    //         addDiv = `
-    //         <div id=${"div" + i} className=${"character"}>
-    //         <img src=${showImages[i]} id=${"img" + i}>
-    //         <span id=${"name" + i}>${showNames[i]}</span>
-    //         </div>
-    //         `
-    //         acum+=addDiv;
-    //         screen1.innerHTML = acum;
-    //     }
-    // }
-    // btnLeft.addEventListener("click", left);
+    // funcion para la flecha izquierda
+    const left= () => {
+        console.log("posición inicial"+positionStart, "posición final"+positionEnd)
+        positionStart -= 15;
+        positionEnd -= 15;
+        pageStart.style.display = "none";
+        pageCharacteres.style.display = "block";
+        screen1.style.display = "visible";
+        btnRigth.style.display ="block";
+        if(positionStart < 0 ){
+        positionStart = 0;
+        positionEnd = 15;
+        btnLeft.style.display = "none";
+        return;
+        } else if(positionStart >= 15){
+            btnLeft.style.display = "block";
+        }
+        screen1.innerHTML = "";
+        acum = "";
+        for(let i = positionStart; i < positionEnd; i++ ){
+            addDiv = `
+            <div id=${"div" + i} className=${"character"}>
+            <img src=${showDatas[i].image} id=${"img" + i}>
+             <span id=${"name" + i}>${showDatas[i].name}</span>
+             </div>
+            `
+            acum+=addDiv;
+            screen1.innerHTML = acum;
+        }
+    }
+    btnLeft.addEventListener("click", left);
+
+//función para volver a la página de inicio
+        const home = () =>{
+            pageCharacteres.style.display = "none";
+            pageStart.style.display = "grid";
+            positionStart = -15;
+            positionEnd = 0;
+            showDatas = showData(dataRyM);
+        }
+btnInit.addEventListener("click", home);
+
+// función para el botón ordenar de la A-Z
+const selectOrder = () =>{
+ showDatas = showData(dataRyM);
+ let orderImageAndName = showOrder(showDatas);
+ console.log(orderImageAndName);
+ positionStart = -15;
+ positionEnd = 0;
+ rigth();
+
+}
+btnOrderAZ.addEventListener("click", selectOrder);
+
+// función para el botón ordenar de la A-Z
+const orderReverse = () => {
+ showDatas = showData(dataRyM);
+ let orderImageAndName = showOrder(showDatas);
+ orderImageAndName.reverse();
+ positionStart = -15;
+ positionEnd = 0;
+ rigth();
+}
+btnOrderZA.addEventListener("click", orderReverse);
+
+//función para filtrar por especies humanas
+const filtersHuman = () => {
+    showDatas = showData(dataRyM);
+     showDatas = filterHuman(showDatas);
+     sizeData = showDatas.length;
+        positionStart = -15;
+        positionEnd = 0;
+        rigth();
+    }    
+btnHuman.addEventListener("click", filtersHuman)
+
+//función para filtrar por especies aliens
+const filtersAliens = () => {
+    showDatas = showData(dataRyM);
+    showDatas = filterAlien(showDatas);
+    console.log(showDatas);
+    sizeData = showDatas.length;
+       positionStart = -15;
+       positionEnd = 0;
+       rigth();
+   }  
+btnAlien.addEventListener("click", filtersAliens);
