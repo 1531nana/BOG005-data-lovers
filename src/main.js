@@ -12,9 +12,15 @@ let showDatas = showData(dataRyM);
 let acum = "";
 let addDiv;
 let screen1 = document.getElementById("screen1");
-//let sizeData = showImages.length;
-let sizeData = showDatas.length
-
+let sizeData = showDatas.length;
+console.log(sizeData);
+// let divideData = Math.round(sizeData / 33);
+// console.log(divideData);
+// variables del DOM
+let btnHuman = document.getElementById("human");
+let btnAlien = document.getElementById("alien");
+// let btnMainCharacteres = document.getElementById("main_characteres");
+let btnOrderAZ = document.getElementById("order_a_z");
 let pageStart = document.getElementById("page_start");
 let pageCharacteres = document.getElementById("page_characteres");
 let btnCharacteres = document.getElementById("button_characteres");
