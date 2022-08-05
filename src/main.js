@@ -10,6 +10,7 @@ let sizeData = showDatas.length;
 console.log(sizeData);
 // let divideData = Math.round(sizeData / 33);
 // console.log(divideData);
+// variables del DOM
 let btnHuman = document.getElementById("human");
 let btnAlien = document.getElementById("alien");
 // let btnMainCharacteres = document.getElementById("main_characteres");
