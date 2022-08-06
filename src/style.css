@@ -164,7 +164,22 @@ img#left {
     background-color: #62A4AB;
     transition: 0.1s;
 }
+#portaldatos {
+    display: grid;
+}
 
+#printCuriousFact {
+    color: black;
+    font-size: 25px;
+    font-weight: bolder;
+    width: 28em;
+    height: 5em;
+    text-align: center;
+    background-image: url(portal.png);
+    background-size: cover;
+    margin: 3%;
+padding: 30%;
+}
 /* medida para celular */
 @media screen and (max-width: 576px){
     #page_start{
