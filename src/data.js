@@ -1,43 +1,30 @@
-
-// export const showImage = (element) => {
-//   //  let imageCharacter = Object.values(element);
-//   //  let listImage = imageCharacter[1].map(total => total.image);
-//    let listImage = element['results'].map(total => total.image);
-//   //  console.log(listImage);
-//      return listImage;
-// };
-
-
-// export const showName = (element) => {
-//   // let nameCharacter = Object.values(element);
-//   // // console.log(nameCharacter);
-//   // let listName = nameCharacter[1].map(total => total.name);
-//   let listName = element['results'].map(total => total.name);
-
-//   return listName;
-// };
-
+//función que itera sobre los datos image, name, species, gender, status
 export const showData = (element) => {
-  let listImage = element['results'].map(total => total.image);
   let listName = element['results'].map(total => total.name);
+  let listImage = element['results'].map(total => total.image);
   let listSpecies = element['results'].map(total => total.species);
+  let listGender = element['results'].map(total => total.gender);
+  let listStatus = element['results'].map(total => total.status);
 
-  function createItem(name, image, species) {
+  //función constructora, para crearle una propiedad a cada objeto
+  function createItem(name, image, species, gender, status) {
     this.name = name;
     this.image = image;
     this.species = species;
-  }
-  let dataToOrder = [];
+    this.gender = gender;
+    this.status = status;
 
+  }
+//ciclo que añade cada valor a su determinada propiedad
+  let dataToOrder = [];
   for(let i = 0; i < listImage.length; i++){
-    let createObject = new createItem(listName[i], listImage[i], listSpecies[i]);  
+    let createObject = new createItem(listName[i], listImage[i], listSpecies[i], listGender[i], listStatus[i]);  
     dataToOrder.push(createObject);
   }
-  // console.log("for "+dataToOrder);
 return dataToOrder
 }
 
-
+//función que exporta los datos ordenados de la A-Z
 export const showOrder = (element) => {
 
   const compareName =(a, b) => {
@@ -48,56 +35,66 @@ export const showOrder = (element) => {
     if ( a.name.toLowerCase() > b.name.toLowerCase()){
       return 1;
     }
-    return 0;
+    // return 0;
   }
 
    element.sort(compareName);
-  // console.log(information);
   return element;
 
 }
 
+//función que filtra especies humanas
 export const filterHuman = (element) => {
   let filtro = element.filter(element =>  element.species == "Human") 
   return filtro}
-
+//función que filtra especies aliens
   export const filterAlien = (element) => {
     let filtros = element.filter(element =>  element.species == "Alien") 
-    console.log(filtros);
     return filtros}
+
+//función que filtra el género de los personajes
+  // export const showGender = (element) => {
+  //   let gender1 = element.map(element =>  element.gender) ;
+  //   return  gender1;
+  // }
+  export const showRandom = (element) => {
+    let gender1 = element.map(element =>  element.gender) ;
+    let showMale = gender1.filter(element => element === "Male");
+    let showFemale = gender1.filter(element => element === "Female"); 
+    let showUndefined = gender1.filter(element => element === "unknown");
+      let status1 = element.map(element =>  element.status) 
+    let showAlive = status1.filter(element => element === "Alive");
+    let showDead = status1.filter(element => element === "Dead");
+    let showUnknow = status1.filter(element => element === "unknown");
+    let dataRandom = {
+      male: showMale.length,
+      female: showFemale.length,
+      genderUndefined: showUndefined.length,
+      alive: showAlive.length,
+      dead: showDead.length,
+      statusUndefined: showUnknow.length
+    }
+    return  dataRandom;
+  }
+
+
+  // export const male = (element) => {
+  //   let showMale = element.filter(element => element.gender == "Male");
+  //   return  showMale;
+  // }
+
+  //función que filtra si un personaje está vivo o muerto
+  // export const showStatus = (element) => {
+  //   let status1 = element.map(element =>  element.status) 
+  //   return status1;
+  // }
   
-//     if(element.species){
-//      return humans.push(element);
-//   }
-//   if(element.species == "Aliens"){
-//     return aliens.push(element);
-//   }
-//   // console.log(filtro);
-// }
+  export const main_characteres = (element)=> {
+    // let showMainCharacteres = element['results'].map(element => element);
+    let arreglo = [];
+    for(let i = 0; i < 5; i++){
+      arreglo.push(element[i]);
+    }
+    return arreglo;
+  }
 
-// )
-// return filtro, aliens, humans;
-// }
-
-// export const ordenar = (element) =>{
-//   let order = element.map(showName().concat(showImage()));
-//   return order;
-// }
-
-// export const showOrder = (a, b) => {
-// // let sortImage = showImage();
-// // let sortName = showName();
-// // let sortImageAndName = sortImage + sortName;
-// if(a.name < b.name ){
-// return -1;
-// } else if (a.name > b.name){
-//   return 1;
-// }
-// return 0;
-// }
-
-// export const showNameAndImageSort = (element) => {
-//   let nameAndImageSort = showName().sort(element)
-//   return nameAndImageSort;
-//   // element['results'].sort((total => total.name))
-// }

@@ -91,7 +91,7 @@ opacity: 0.8;
 #bottons_navegation  li  a:hover{
     background-color: #62A4AB;
     opacity: 0.8 ;
-    color: rgb(14, 13, 13);
+    color: white;
     transition: 0.3s;
 }
 #bottons_navegation li ul{
@@ -123,6 +123,19 @@ img{
     width: 15vw;
     height: 25vh;
 }
+/* ------------ */
+/* #div0{
+overflow: hidden;
+position: relative;
+box-shadow: 5px white;
+}
+#div0 #description {
+position: absolute;
+top: 50%;
+left: 50%;
+backface-visibility: hidden;
+} */
+/* ---------- */
 .character{
     flex-direction: column;
     background: aqua;
@@ -164,13 +177,39 @@ img#left {
     background-color: #62A4AB;
     transition: 0.1s;
 }
+#caja_curious{
+    background-image: url(portal.png) ;
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* background: #62A4AB; */
+    /* border: 2px solid rgb(131, 231, 198); */
+    /* width: ; */
+    padding: 4em 4em;
+    color: black;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 2em;
+    width: 12em;
+    height: 3em;
+    font-weight: bolder;
+    opacity: 0.9;
+    text-shadow: 1px 1px 5px white;
+}
+
+
+
 
 /* medida para celular */
 @media screen and (max-width: 576px){
     #page_start{
-        display: contents;
+        display: grid;
+        grid-template-columns: 90%;
         width: 0;
         justify-items: center;
+        margin: 0 10em
     }
 #img_start{
     /* margin: 2em 2em 0 2em; */
@@ -238,6 +277,30 @@ span{
     width: 30px;
     height: 30px;
     padding: 0.4em;
+}
+#caja_curious{
+    font-size: 18px;
+    /* padding: 3em 4em 4em 2em; */
+    padding: 60px;
+    margin: 7em 0em;
+    width: 200px;
+}
+#unfold_alphabet li a{
+    display: block;
+    color: white;
+    background: darkcyan;
+    /* width: 73%; */
+    border: 1px solid black;
+}
+#unfold_species li a {
+    display: block;
+    color: white;
+    background: darkcyan;
+    /* width: 73%; */
+    border: 1px solid black;
+}
+#bottons_navegation  li  a:hover{
+    opacity: 1 ;
 }
 }
 
