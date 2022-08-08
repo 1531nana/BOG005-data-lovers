@@ -1,28 +1,30 @@
-
+//función que itera sobre los datos image, name, species, gender, status
 export const showData = (element) => {
-  let listImage = element['results'].map(total => total.image);
   let listName = element['results'].map(total => total.name);
+  let listImage = element['results'].map(total => total.image);
   let listSpecies = element['results'].map(total => total.species);
   let listGender = element['results'].map(total => total.gender);
   let listStatus = element['results'].map(total => total.status);
 
+  //función constructora, para crearle una propiedad a cada objeto
   function createItem(name, image, species, gender, status) {
     this.name = name;
     this.image = image;
     this.species = species;
     this.gender = gender;
     this.status = status;
-  }
-  let dataToOrder = [];
 
-  for (let i = 0; i < listImage.length; i++) {
-    let createObject = new createItem(listName[i], listImage[i], listSpecies[i], listGender[i], listStatus[i]);
+  }
+//ciclo que añade cada valor a su determinada propiedad
+  let dataToOrder = [];
+  for(let i = 0; i < listImage.length; i++){
+    let createObject = new createItem(listName[i], listImage[i], listSpecies[i], listGender[i], listStatus[i]);  
     dataToOrder.push(createObject);
   }
-  return dataToOrder
+return dataToOrder
 }
 
-
+//función que exporta los datos ordenados de la A-Z
 export const showOrder = (element) => {
 
   const compareName = (a, b) => {
@@ -33,110 +35,66 @@ export const showOrder = (element) => {
     if (a.name.toLowerCase() > b.name.toLowerCase()) {
       return 1;
     }
-    return 0;
+    // return 0;
   }
 
-  element.sort(compareName);
-
+   element.sort(compareName);
   return element;
 
 }
 
+//función que filtra especies humanas
 export const filterHuman = (element) => {
-  let filtro = element.filter(element => element.species == "Human")
-  return filtro
-}
+  let filtro = element.filter(element =>  element.species == "Human") 
+  return filtro}
+//función que filtra especies aliens
+  export const filterAlien = (element) => {
+    let filtros = element.filter(element =>  element.species == "Alien") 
+    return filtros}
 
-export const filterAlien = (element) => {
-  let filtros = element.filter(element => element.species == "Alien")
-  return filtros;
-}
-
-//   export const dataCurious = (element)=> {
-//     let genderF = 0;
-//     let genderM = 0;
-//     let genderU = 0;
-//         element.forEach(element => {
-//       if(element.gender== "Female"){
-//        genderF ++;
-//       } else if (element.gender == "Male"){
-//         genderM ++;
-//       } else {
-//         genderU ++;
-//   }});
-//   let dataGender = [];
-// dataGender.push(genderF, genderM, genderU);
-
-//   let statusA = 0;
-//   let statusD = 0;
-//   let statusU = 0;
-//   element.forEach(element => {
-//     if(element.status == "Alive"){
-//       statusA ++;
-//     } else if (element.status == "Dead"){
-//       statusD ++;
-//     } else {
-//       statusU ++; 
-//     }});
-//     let dataStatus = [];
-//     dataStatus.push(statusA, statusD, statusU);
-
-//     let dataRandom = [];
-//     dataRandom.push(dataGender);
-//     dataRandom.push(dataStatus);
-//   return (dataRandom)
-//   }
-
-export const dataCurious = (element) => {
-  let dataRandom = [];
-
-  let genderF = 0;
-  let genderM = 0;
-  let genderU = 0;
-  element.forEach(element => {
-    if (element.gender == "Female") {
-      genderF++;
-    } else if (element.gender == "Male") {
-      genderM++;
-    } else {
-      genderU++;
+//función que filtra el género de los personajes
+  // export const showGender = (element) => {
+  //   let gender1 = element.map(element =>  element.gender) ;
+  //   return  gender1;
+  // }
+  export const showRandom = (element) => {
+    let gender1 = element.map(element =>  element.gender) ;
+    let showMale = gender1.filter(element => element === "Male");
+    let showFemale = gender1.filter(element => element === "Female"); 
+    let showUndefined = gender1.filter(element => element === "unknown");
+      let status1 = element.map(element =>  element.status) 
+    let showAlive = status1.filter(element => element === "Alive");
+    let showDead = status1.filter(element => element === "Dead");
+    let showUnknow = status1.filter(element => element === "unknown");
+    let dataRandom = {
+      male: showMale.length,
+      female: showFemale.length,
+      genderUndefined: showUndefined.length,
+      alive: showAlive.length,
+      dead: showDead.length,
+      statusUndefined: showUnknow.length
     }
-  });
+    return  dataRandom;
+  }
 
-  let statusA = 0;
-  let statusD = 0;
-  let statusU = 0;
-  element.forEach(element => {
-    if (element.status == "Alive") {
-      statusA++;
-    } else if (element.status == "Dead") {
-      statusD++;
-    } else {
-      statusU++;
+
+  // export const male = (element) => {
+  //   let showMale = element.filter(element => element.gender == "Male");
+  //   return  showMale;
+  // }
+
+  //función que filtra si un personaje está vivo o muerto
+  // export const showStatus = (element) => {
+  //   let status1 = element.map(element =>  element.status) 
+  //   return status1;
+  // }
+  
+  export const main_characteres = (element)=> {
+    // let showMainCharacteres = element['results'].map(element => element);
+    let arreglo = [];
+    for(let i = 0; i < 5; i++){
+      arreglo.push(element[i]);
     }
-  });
+    return arreglo;
+  }
 
-  // objeto pero es mas facil crear el objeto directo
-  // function createDataCurious (female, male, unknown){
-  //   this.female = female;
-  //   this.male = male;
-  //   this.unknown = unknown;}
-let dataGender = {
-  Female: genderF,
-  Male: genderM,
-  Unknown: genderU,
-};
-dataRandom.push(dataGender);
-
-let dataStatus = {
-  Alive: statusA,
-  Dead: statusD,
-  Unknown: statusU,
-}
-dataRandom.push(dataStatus);
-
-
-// let createObjectGender = new createDataCurious (genderF, genderM, genderU);
-console.log("datarandom", dataRandom)
-return dataRandom;
-}
