@@ -32,10 +32,6 @@ export const showOrder = (element) => {
     if ( a.name.toLowerCase() < b.name.toLowerCase()){
       return -1;
     }
-    if ( a.name.toLowerCase() > b.name.toLowerCase()){
-      return 1;
-    }
-    // return 0;
   }
 
    element.sort(compareName);
@@ -47,16 +43,13 @@ export const showOrder = (element) => {
 export const filterHuman = (element) => {
   let filtro = element.filter(element =>  element.species == "Human") 
   return filtro}
+
 //función que filtra especies aliens
   export const filterAlien = (element) => {
     let filtros = element.filter(element =>  element.species == "Alien") 
     return filtros}
 
-//función que filtra el género de los personajes
-  // export const showGender = (element) => {
-  //   let gender1 = element.map(element =>  element.gender) ;
-  //   return  gender1;
-  // }
+//función que muestra el cálculo
   export const showRandom = (element) => {
     let gender1 = element.map(element =>  element.gender) ;
     let showMale = gender1.filter(element => element === "Male");
@@ -76,25 +69,3 @@ export const filterHuman = (element) => {
     }
     return  dataRandom;
   }
-
-
-  // export const male = (element) => {
-  //   let showMale = element.filter(element => element.gender == "Male");
-  //   return  showMale;
-  // }
-
-  //función que filtra si un personaje está vivo o muerto
-  // export const showStatus = (element) => {
-  //   let status1 = element.map(element =>  element.status) 
-  //   return status1;
-  // }
-  
-  export const main_characteres = (element)=> {
-    // let showMainCharacteres = element['results'].map(element => element);
-    let arreglo = [];
-    for(let i = 0; i < 5; i++){
-      arreglo.push(element[i]);
-    }
-    return arreglo;
-  }
-
