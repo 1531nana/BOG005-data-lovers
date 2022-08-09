@@ -89,12 +89,12 @@ export const filterHuman = (element) => {
   //   return status1;
   // }
   
-  export const main_characteres = (element)=> {
-    // let showMainCharacteres = element['results'].map(element => element);
-    let arreglo = [];
-    for(let i = 0; i < 5; i++){
-      arreglo.push(element[i]);
-    }
-    return arreglo;
-  }
+  // export const main_characteres = (element)=> {
+  //   // let showMainCharacteres = element['results'].map(element => element);
+  //   let arreglo = [];
+  //   for(let i = 0; i < 5; i++){
+  //     arreglo.push(element[i]);
+  //   }
+  //   return arreglo;
+  // }
 

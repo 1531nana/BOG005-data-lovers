@@ -1,4 +1,4 @@
-import { showData, showOrder, filterHuman, filterAlien, showRandom, main_characteres} from './data.js';
+import { showData, showOrder, filterHuman, filterAlien, showRandom} from './data.js';
 import data from './data/rickandmorty/rickandmorty.js';
 let dataRyM = data;
 // console.log(dataRyM);
@@ -10,6 +10,7 @@ let btnInit = document.getElementById("init");
 let acum = "";
 let addDiv;
 let screen1 = document.getElementById("screen1");
+let screen2 = document.getElementById("screen2");
 let sizeData = showDatas.length;
 let btnCurious = document.getElementById("curious_fact");
 // let showGenders = showGender(showDatas);
@@ -53,6 +54,8 @@ const datesRandom = () => {
     pageStart.style.display = "none";
     screen1.style.display = "none";
     btnRigth.style.display = "none";
+    btnLeft.style.display = "none";
+    screen2.style.display="none";
     boxCurious.style.display= "block";
     let aleatorie = datosRan[Math.floor(Math.random() * datosRan.length)]
     boxCurious.textContent = aleatorie;
@@ -67,6 +70,7 @@ btnCurious.addEventListener("click", datesRandom)
         positionEnd += 15;
         pageStart.style.display = "none";
         pageCharacteres.style.display = "block";
+        screen2.style.display="none";
         screen1.style.display = "visible";
         screen1.innerHTML = "";
         if(positionStart >= 15){
@@ -80,7 +84,7 @@ btnCurious.addEventListener("click", datesRandom)
                 return;
             }  else {
                     addDiv = `
-                    <div id=${"div" + i} className=${"character"}>
+                    <div id=${"div" + i} >
                     <img src=${showDatas[i].image} id=${"img" + i}>
                     <span id=${"name" + i}>${showDatas[i].name}</span>
                     </div>
@@ -101,6 +105,7 @@ btnCurious.addEventListener("click", datesRandom)
         pageStart.style.display = "none";
         pageCharacteres.style.display = "block";
         screen1.style.display = "grid";
+        screen2.style.display="none";
         btnRigth.style.display ="block";
         if(positionStart < 0 ){
         positionStart = 0;
@@ -114,7 +119,7 @@ btnCurious.addEventListener("click", datesRandom)
     acum = "";
     for (let i = positionStart; i < positionEnd; i++) {
         addDiv = `
-            <div id=${"div" + i} className=${"character"}>
+            <div id=${"div" + i}>
             <img src=${showDatas[i].image} id=${"img" + i}>
              <span id=${"name" + i}>${showDatas[i].name}</span>
              </div>
@@ -128,6 +133,7 @@ btnLeft.addEventListener("click", left);
 //función para volver a la página de inicio
         const home = () =>{
             pageCharacteres.style.display = "none";
+            
             pageStart.style.display = "grid";
             boxCurious.style.display= "none";
             positionStart = -15;
@@ -138,6 +144,7 @@ btnInit.addEventListener("click", home);
 
 // función para el botón ordenar de la A-Z
 const selectOrder = () =>{
+    screen2.style.display="none";
      screen1.style.display = "grid";
     btnRigth.style.display = "block";
     sizeData = showDatas.length;
@@ -153,6 +160,7 @@ btnOrderAZ.addEventListener("click", selectOrder);
 
 // función para el botón ordenar de la Z-A
 const orderReverse = () => {
+    screen2.style.display="none";
     screen1.style.display = "grid";
     btnRigth.style.display = "block";
     sizeData = showDatas.length;
@@ -167,6 +175,7 @@ btnOrderZA.addEventListener("click", orderReverse);
 
 //función para filtrar por especies humanas
 const filtersHuman = () => {
+    screen2.style.display="none";
     screen1.style.display = "grid";
     btnRigth.style.display = "block";
     sizeData = showDatas.length;
@@ -180,6 +189,7 @@ btnHuman.addEventListener("click", filtersHuman)
 
 //función para filtrar por especies aliens
 const filtersAliens = () => {
+    screen2.style.display="none";
     screen1.style.display = "grid";
     btnRigth.style.display = "block";
     sizeData = showDatas.length;
@@ -191,6 +201,36 @@ const filtersAliens = () => {
        rigth();
    }  
 btnAlien.addEventListener("click", filtersAliens);
+
+const main = () => {
+    pageStart.style.display = "none";
+        pageCharacteres.style.display = "block";
+        screen1.style.display="none";
+        btnLeft.style.display ="none";
+        btnRigth.style.display = "none";
+    acum = "";
+    for (let i = 0; i < 5; i++) {
+        // if (i >= sizeData) {
+        //     btnRigth.style.display = "none";
+        //     return;
+        // }  else {
+                addDiv = `
+                <div id=${"divMain" + i} class= card>
+                <div class=face id=front>
+                <img src=${showDatas[i].image} id=${"imgMain" + i}>
+                <span id=${"nameMain" + i}>${showDatas[i].name}</span>
+                </div>
+                <div class=face id=back>
+                <span id=${"nameMain" + i}>Nombre: ${showDatas[i].name} <br>Estatus: ${showDatas[i].status} <br> Genero: ${showDatas[i].gender} <br> Especie: ${showDatas[i].species} <br></span>
+                </div>
+                </div>
+                `
+        acum += addDiv;
+        screen2.innerHTML = acum;
+    }
+}
+
+document.getElementById("button_main_characteres").addEventListener("click", main);
 
 //función para mostrar personajes principales
 // let imag = document.getElementsByTagName("img");
