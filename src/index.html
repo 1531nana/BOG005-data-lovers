@@ -2,11 +2,59 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Lovers</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <script src="main.js" type="module"></script>
+    <header>
+     <!-- <h1 > -->
+      <img id="titulo" src="rick nombre 2.jpg" alt="título">
+    <!-- </h1> -->
+  </header>
+  <section>
+    <div id="page_start">
+      <img id="img_start" src="https://www.tonica.la/__export/1589659313867/sites/debate/img/2020/05/16/rick-and-morty-portada.jpg_423682103.jpg" alt="Rick y Morty">
+      <div>
+        <p id="p_intro">Después de haber estado desaparecido durante casi 20 años, Rick Sánchez llega de imprevisto a la puerta de la casa de su hija Beth y se va a vivir con ella y su familia utilizando el garaje como su laboratorio personal.</p>
+        <button id="button_characteres">Ver personajes</button>
+        <button id="button_main_characteres">Personajes principales</button>
+
+      </div>
+  
+    </div>
+  </section>
+  <section id="page_characteres">
+    <nav id="nav">
+      <ul id="bottons_navegation">
+        <li id="init"><a href="#">Inicio</a></li>
+        <li id="order_alphabetic"><a href="#">Ordenar alfabéticamente</a>
+          <ul id="unfold_alphabet">
+            <li id="order_a_z"><a href="#">Ordenar de A-Z</a></li>
+            <li id="order_z_a"><a href="#">Ordenar de Z-A</a></li>
+          </ul>
+        </li>
+        <li id="filter_species"><a href="#">Filtrar especies</a>
+        <ul id="unfold_species">
+          <li id="human"><a href="#">Humanas</a></li>
+          <li id="alien"><a href="#">Aliens</a></li>
+          <!-- <li id="main_characteres"><a href="#">Personajes principales</a></li> -->
+        </ul>
+      </li>
+        <li id="curious_fact"><a href="#">Dato Curioso</a></li>
+      </ul>
+    </nav>
+    <div class="container">
+      <div id="screen1"></div>
+      <p id="descrption"></p>
+      <img class="control left" id="left" src="https://img1.freepng.es/20180604/rhr/kisspng-arrow-computer-icons-encapsulated-postscript-butto-back-icon-5b160a5f752a05.7625289415281711034799.jpg" alt="flecha izquierda">
+      <img class="control rigth" id="rigth" src="https://cdn-icons-png.flaticon.com/512/17/17437.png" alt="flecha derecha">
+    </div>
+  </section>
+  <div id="screen2"></div>
+    <!-- <textarea name="curious" id="caja_curious" cols="20" rows="5"></textarea> -->
+    <p name="curious" id="caja_curious"></p>
+  <!-- <button>1</button> -->
+  <script src="main.js" type="module"></script>
   </body>
 </html>
