@@ -1,7 +1,8 @@
 # Data Lovers
 ## _Rick y Morty_
 
-En este sitio web, se muestra la data completa de Rick y Morty permitiéndole al usuario una interacción con ella. Teniendo la posibilidad de filtrarla por especies humanas y aliens. Ordenarla alfabéticamente de la A a la Z y de la Z a la A. Y visualizar datos curiosos aleatoriamente. También, puede visualizar los personajes principales de la serie, con toda su información. En este link puedes interactuar con la data de Rick y Morty: 
+En este sitio web, se muestra la data completa de Rick y Morty permitiéndole al usuario una interacción con ella. Teniendo la posibilidad de filtrarla por especies humanas y aliens. Ordenarla alfabéticamente de la A a la Z y de la Z a la A. Y visualizar datos curiosos aleatoriamente. También, puede visualizar los personajes principales de la serie, con toda su información. En este [link](https://1531nana.github.io/BOG005-data-lovers/src/index.html) puedes interactuar con la data de Rick y Morty.
+
 
 ## Historias de Usuarios
 
