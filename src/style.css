@@ -13,7 +13,7 @@ header{
     width: 100%;
 }
 
-#titulo{
+#title-header{
     border-radius: 0;
     margin: 0.06em 25em;
     width: 100%;
@@ -21,7 +21,7 @@ header{
     display: block;
     display: grid;
 }
-#page_start{
+#page-start{
     display: grid;
     grid-template-columns: 60% auto;
     color: white;
@@ -29,7 +29,7 @@ header{
     height: 28.75em;
     margin: 0 5em;
 }
-#img_start{
+#img-start{
     border-radius: 3em;
     width: 25.62em;
     height: 25.62em;
@@ -38,14 +38,14 @@ header{
     padding: 0.6em;
     margin: 1.87em 6.85em;
 }
-#p_intro{
+#p-intro{
     font-size: x-large;
     margin-top: 1em;
     padding: 2em 2.5em 0 0;
     text-align: center;
     justify-content: center;
 }
-#button_characteres, #button_main_characteres{
+#button-characteres, #button-main-characteres{
     background: #f9bf1e;
     color: black;
     margin: 3em 2em 1em 3em;
@@ -58,13 +58,13 @@ header{
     cursor: pointer;
     width: 14em;
 }
-#button_characteres:hover, #button_main_characteres:hover{
+#button-characteres:hover, #button-main-characteres:hover{
 background-color: #E4D33E;
 color: brown;
 transition: 0.1s;
 opacity: 0.8;
 }
-#button_main_characteres{
+#button-main-characteres{
     margin: 0em 2em 1em 3em;
     padding: 0.62em 1em;
 }
@@ -78,11 +78,11 @@ opacity: 0.8;
  ul{
     list-style: none;
 }
-#bottons_navegation  li{
+#bottons-navegation  li{
     float: left;
     min-width: 120px;
 }
-#bottons_navegation  li  a{
+#bottons-navegation  li  a{
     background-color: black;
     color: white;
     text-decoration: none;
@@ -91,30 +91,30 @@ opacity: 0.8;
     text-align: center;
     border: 5px solid darkcyan;
 }
-#bottons_navegation  li  a:hover{
+#bottons-navegation  li  a:hover{
     background-color: #62A4AB;
     opacity: 0.8 ;
     color: white;
     transition: 0.3s;
 }
-#bottons_navegation li ul{
+#bottons-navegation li ul{
     display: none;
     position: absolute;
     min-width: 140px;
 }
-#bottons_navegation li:hover ul{
+#bottons-navegation li:hover ul{
     display: block;
 }
-#unfold_alphabet li{
+#unfold-alphabet li{
     display: block;
     width: 73%;
 }
-#unfold_species li {
+#unfold-species li {
     display: block;
     width: 60%;
 }
 
-#screen1 {
+#screen-all-characteres {
     width: 90%;
     margin: auto;
     padding: 3%;
@@ -159,7 +159,7 @@ img#left {
     background-color: #62A4AB;
     transition: 0.1s;
 }
-#caja_curious{
+#curious-box{
     background-image: url(portal.png) ;
     background-size: contain;
     background-repeat: no-repeat;
@@ -173,7 +173,7 @@ img#left {
     text-shadow: 1px 1px 5px white;
     margin: 1em auto 0 auto;
 }
-#screen2{
+#screen-main-characteres{
    display: flex;
    justify-content: center;
    flex-wrap: wrap;
@@ -245,16 +245,18 @@ transition: .5s;
     transform: perspective(600px) rotateY(360deg);
 }
 
+
+
 /* medida para celular */
 @media screen and (max-width: 576px){
-    #page_start{
+    #page-start{
         display: grid;
         grid-template-columns: 90%;
         width: 0;
         justify-items: center;
         margin: 0 10em
     }
-#img_start{
+#img-start{
     margin: 2em 2em 0.5em 2em;
     padding: 2em;
     width: 12em;
@@ -265,30 +267,30 @@ header{
     justify-content: center;
     width: 100%;
 }
-#titulo{
+#title-header{
 height: 100%;
 width: 70%;
 margin: 0; 
 }
-#p_intro{
+#p-intro{
 font-size: 1em;
 width: 12em;
 text-align: justify;
 padding: 0;
 margin: auto;
 }
-#button_characteres, #button_main_characteres {
+#button-characteres, #button-main-characteres {
 padding: 0.5em 0em;
 font-size: 15px;
 width: 12em;
 }
 
- #screen1{
+ #screen-all-characteres{
     grid-template-columns: repeat(3, 33%);
     margin: 0;
     width: 100%;
  }
- #screen1 div img {
+ #screen-all-characteres div img {
     padding: 0.5em;
     width: 5em;
     height: 5em;
@@ -301,10 +303,10 @@ span{
     width: 45%;
     padding: 15px;
 }
-#bottons_navegation  li{
+#bottons-navegation  li{
     width: 150px;
 }
-#bottons_navegation  li  a{
+#bottons-navegation  li  a{
     padding: 5px 5px;
     height: 12px;
     font-size: 12px;
@@ -315,29 +317,29 @@ span{
     height: 30px;
     padding: 0.4em;
 }
-#caja_curious{
+#curious-box{
     font-size: 18px;
     padding: 60px;
     margin: 7em 0em;
     width: 200px;
 }
-#unfold_alphabet li a{
+#unfold-alphabet li a{
     display: block;
     color: white;
     background: darkcyan;
     border: 1px solid black;
 }
-#unfold_species li a {
+#unfold-species li a {
     display: block;
     color: white;
     background: darkcyan;
     border: 1px solid black;
 }
-#bottons_navegation  li  a:hover{
+#bottons-navegation  li  a:hover{
     opacity: 1 ;
 }
 
-#screen2{
+#screen-main-characteres{
     padding: 7%;
 }
 .card{
@@ -355,26 +357,24 @@ span{
 
 }
 
-
-
 /* medida para tablet */
 @media screen and (min-width: 577px) and (max-width: 768px){
-    #page_start{
+    #page-start{
         grid-template-columns: 90%;
     }
-    #titulo{
+    #title-header{
         border-radius: 0;
         margin: 0.06em 12em;
         width: 60%;
         height: 1%;
         display: grid;
     }
-    #img_start{
+    #img-start{
         width: 30em;
         height: 30em;
         margin: 10px 45px;
     }
-    #p_intro{
+    #p-intro{
         font-size: 30px;
         width: 20em;
         height: 6em ;
@@ -385,15 +385,15 @@ span{
         width: 100%;
         margin: 0 2em;
     }
-    #bottons_navegation li ul {
+    #bottons-navegation li ul {
         min-width: 285px;
     }
-    #screen1{
+    #screen-all-characteres{
         grid-template-columns: repeat(4, 25%);
         margin: 0;
         width: 100%;
      }
-     #screen1 div img {
+     #screen-all-characteres div img {
         padding: 0.5em;
         width: 9em;
         height: 9em;
@@ -401,7 +401,7 @@ span{
     span{
         font-size: 20px;
     }
-    #button_characteres, #button_main_characteres{
+    #button-characteres, #button-main-characteres{
         font-size: 25px;
         margin: 1em 3em 0em 5em;
     }

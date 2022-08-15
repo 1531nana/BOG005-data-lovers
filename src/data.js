@@ -36,20 +36,22 @@ export const showOrder = (element) => {
       return -1;
     }
   };
-  element.sort(compareName);
-  return element;
+  return element.sort(compareName);
+  // return element;
 };
+
+
 
 //función que filtra especies humanas
 export const filterHuman = (element) => {
-  let filtro = element.filter((element) => element.species == "Human");
-  return filtro;
+  return  element.filter((element) => element.species == "Human");
+  // return filtro;
 };
 
 //función que filtra especies aliens
 export const filterAlien = (element) => {
-  let filtros = element.filter((element) => element.species == "Alien");
-  return filtros;
+  return element.filter((element) => element.species == "Alien");
+  // return filtros;
 };
 
 //función que muestra el cálculo

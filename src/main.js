@@ -9,28 +9,29 @@ import data from "./data/rickandmorty/rickandmorty.js";
 let dataRyM = data;
 let showDatas = showData(dataRyM);
 
+
 // variables del DOM
 let btnInit = document.getElementById("init");
 let acum = "";
 let addDiv;
-let screen1 = document.getElementById("screen1");
+let screenAllCharacteres = document.getElementById("screen-all-characteres");
 let sizeData = showDatas.length;
-let btnCurious = document.getElementById("curious_fact");
-let boxCurious = document.getElementById("caja_curious");
+let btnCurious = document.getElementById("curious-fact");
+let boxCurious = document.getElementById("curious-box");
 let btnHuman = document.getElementById("human");
 let btnAlien = document.getElementById("alien");
-let btnMainCharacteres = document.getElementById("button_main_characteres");
-let pageStart = document.getElementById("page_start");
-let pageCharacteres = document.getElementById("page_characteres");
-let btnCharacteres = document.getElementById("button_characteres");
+let btnMainCharacteres = document.getElementById("button-main-characteres");
+let pageStart = document.getElementById("page-start");
+let pageCharacteres = document.getElementById("page-characteres");
+let btnCharacteres = document.getElementById("button-characteres");
 let btnRigth = document.getElementById("rigth");
 let btnLeft = document.getElementById("left");
-let btnOrderAZ = document.getElementById("order_a_z");
-let btnOrderZA = document.getElementById("order_z_a");
+let btnOrderAZ = document.getElementById("order-a-z");
+let btnOrderZA = document.getElementById("order-z-a");
 let positionStart = -15;
 let positionEnd = 0;
+let screenMainCharacteres = document.getElementById("screen-main-characteres");
 let showRandom1 = showRandom(showDatas);
-let screen2 = document.getElementById("screen2");
 
 //Incializar estilos
 pageStart.style.display = "visible";
@@ -54,9 +55,9 @@ let datosRan = [
 
 //función que muestra en una textarea el mensaje aleatorio
 const datesRandom = () => {
-  screen2.style.display = "none";
+  screenMainCharacteres.style.display = "none";
   pageStart.style.display = "none";
-  screen1.style.display = "none";
+  screenAllCharacteres.style.display = "none";
   btnRigth.style.display = "none";
   btnLeft.style.display = "none";
   boxCurious.style.display = "block";
@@ -66,47 +67,58 @@ const datesRandom = () => {
 };
 btnCurious.addEventListener("click", datesRandom);
 
-// funcion para la flecha derecha
+//función rigth() con forEach
 const rigth = () => {
-  screen2.style.display = "none";
+  screenMainCharacteres.style.display = "none";
   boxCurious.style.display = "none";
   positionStart += 15;
   positionEnd += 15;
   pageStart.style.display = "none";
   pageCharacteres.style.display = "block";
-  screen1.style.display = "visible";
-  screen1.innerHTML = "";
+  screenAllCharacteres.style.display = "visible";
+  screenAllCharacteres.innerHTML = "";
   if (positionStart >= 15) {
     btnLeft.style.display = "block";
   }
   acum = "";
-  for (let i = positionStart; i < positionEnd; i++) {
-    if (i >= sizeData) {
+  showDatas.forEach((element, index) => {
+    if (positionEnd >= sizeData) {
       btnRigth.style.display = "none";
       return;
-    } else {
+    } else if (index >= positionStart && index < positionEnd) {
       addDiv = `
-                    <div id=${"div" + i} >
-                    <img src=${showDatas[i].image} id=${"img" + i}>
-                    <span id=${"name" + i}>${showDatas[i].name}</span>
-                    </div>
-                    `;
+           <div id=${"div" + index} >
+           <img src=${element.image} id=${"img" + index}>
+           <span id=${"name" + index}>${element.name}</span>
+           </div>
+                `;
       acum += addDiv;
-      screen1.innerHTML = acum;
+      screenAllCharacteres.innerHTML = acum;
     }
-  }
+  });
 };
 btnCharacteres.addEventListener("click", rigth);
 btnRigth.addEventListener("click", rigth);
 
-// funcion para la flecha izquierda
+//función refactorizada
+let dataCopied = (datas) => {
+  return (
+    (showDatas = showData(dataRyM)),
+    (showDatas = datas(showDatas)),
+    (sizeData = showDatas.length),
+    (positionStart = -15),
+    (positionEnd = 0),
+    rigth()
+  );
+};
+
 const left = () => {
-  screen2.style.display = "none";
+  screenMainCharacteres.style.display = "none";
   positionStart -= 15;
   positionEnd -= 15;
   pageStart.style.display = "none";
   pageCharacteres.style.display = "block";
-  screen1.style.display = "grid";
+  screenAllCharacteres.style.display = "grid";
   btnRigth.style.display = "block";
   if (positionStart < 0) {
     positionStart = 0;
@@ -116,24 +128,26 @@ const left = () => {
   } else if (positionStart >= 15) {
     btnLeft.style.display = "block";
   }
-  screen1.innerHTML = "";
+  screenAllCharacteres.innerHTML = "";
   acum = "";
-  for (let i = positionStart; i < positionEnd; i++) {
-    addDiv = `
-            <div id=${"div" + i} >
-            <img src=${showDatas[i].image} id=${"img" + i}>
-             <span id=${"name" + i}>${showDatas[i].name}</span>
-             </div>
-            `;
-    acum += addDiv;
-    screen1.innerHTML = acum;
-  }
+  showDatas.forEach((element, index) => {
+    if (index >= positionStart && index < positionEnd) {
+      addDiv = `
+              <div id=${"div" + index} >
+              <img src=${element.image} id=${"img" + index}>
+               <span id=${"name" + index}>${element.name}</span>
+               </div>
+              `;
+      acum += addDiv;
+      screenAllCharacteres.innerHTML = acum;
+    }
+  });
 };
 btnLeft.addEventListener("click", left);
 
 //función para volver a la página de inicio
 const home = () => {
-  screen2.style.display = "none";
+  screenMainCharacteres.style.display = "none";
   pageCharacteres.style.display = "none";
   pageStart.style.display = "grid";
   boxCurious.style.display = "none";
@@ -145,24 +159,18 @@ btnInit.addEventListener("click", home);
 
 // función para el botón ordenar de la A-Z
 const selectOrder = () => {
-  screen2.style.display = "none";
-  screen1.style.display = "grid";
+  screenMainCharacteres.style.display = "none";
+  screenAllCharacteres.style.display = "grid";
   btnRigth.style.display = "block";
-  // sizeData = showDatas.length;
-  showDatas = showData(dataRyM);
-  showDatas = showOrder(showDatas);
-  positionStart = -15;
-  positionEnd = 0;
-  rigth();
+  dataCopied(showOrder);
 };
 btnOrderAZ.addEventListener("click", selectOrder);
 
 // función para el botón ordenar de la Z-A
 const orderReverse = () => {
-  screen2.style.display = "none";
-  screen1.style.display = "grid";
+  screenMainCharacteres.style.display = "none";
+  screenAllCharacteres.style.display = "grid";
   btnRigth.style.display = "block";
-  // sizeData = showDatas.length;
   showDatas = showData(dataRyM);
   showDatas = showOrder(showDatas).reverse();
   positionStart = -15;
@@ -173,29 +181,19 @@ btnOrderZA.addEventListener("click", orderReverse);
 
 //función para filtrar por especies humanas
 const filtersHuman = () => {
-  screen2.style.display = "none";
-  screen1.style.display = "grid";
+  screenMainCharacteres.style.display = "none";
+  screenAllCharacteres.style.display = "grid";
   btnRigth.style.display = "block";
-  sizeData = showDatas.length;
-  showDatas = showData(dataRyM);
-  showDatas = filterHuman(showDatas);
-  positionStart = -15;
-  positionEnd = 0;
-  rigth();
+  dataCopied(filterHuman);
 };
 btnHuman.addEventListener("click", filtersHuman);
 
 //función para filtrar por especies aliens
 const filtersAliens = () => {
-  screen2.style.display = "none";
-  screen1.style.display = "grid";
+  screenMainCharacteres.style.display = "none";
+  screenAllCharacteres.style.display = "grid";
   btnRigth.style.display = "block";
-  sizeData = showDatas.length;
-  showDatas = showData(dataRyM);
-  showDatas = filterAlien(showDatas);
-  positionStart = -15;
-  positionEnd = 0;
-  rigth();
+  dataCopied(filterAlien);
 };
 btnAlien.addEventListener("click", filtersAliens);
 
@@ -204,32 +202,29 @@ let showMainCharacteres = () => {
   boxCurious.style.display = "none";
   pageStart.style.display = "none";
   pageCharacteres.style.display = "block";
-  screen1.style.display = "none";
-  screen2.style.display = "visible";
+  screenAllCharacteres.style.display = "none";
+  screenMainCharacteres.style.display = "visible";
   btnRigth.style.display = "none";
   btnLeft.style.display = "none";
-  screen2.innerHTML = "";
+  screenMainCharacteres.innerHTML = "";
   acum = "";
   for (let i = 0; i < 5; i++) {
     addDiv = `
-                    <div id=${"divMain" + i} class=${"card"}>
-                    <div id=front class=face>
-                    <img src=${showDatas[i].image} id=${"imgMain" + i}>
-                    <span id=${"nameMain" + i}>${showDatas[i].name}</span>
-                    </div>
-                    <div id=back class=face>
-                    <span id=${"nameMain" + i}>Nombre: ${
-      showDatas[i].name
-    } <br> 
-                    Especie: ${showDatas[i].species} <br> Estatus: ${
-      showDatas[i].status
-    } <br> 
-                    Género: ${showDatas[i].gender} </span>
-                    </div>
-                    </div>  
-                    `;
+      <div id=${"divMain" + i} class=${"card"}>
+      <div id=front class=face>
+      <img src=${showDatas[i].image} id=${"imgMain" + i}>
+      <span id=${"nameMain" + i}>${showDatas[i].name}</span>
+      </div>
+      <div id=back class=face>
+      <span id=${"nameMain" + i}>Name: ${showDatas[i].name} <br> 
+      Specie: ${showDatas[i].species} <br>
+      Status: ${showDatas[i].status} <br> 
+      Gender: ${showDatas[i].gender} </span>
+      </div>
+      </div>  
+        `;
     acum += addDiv;
-    screen2.innerHTML = acum;
+    screenMainCharacteres.innerHTML = acum;
   }
 };
 btnMainCharacteres.addEventListener("click", showMainCharacteres);
