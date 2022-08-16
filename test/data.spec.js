@@ -57,13 +57,13 @@ const dataResults = [
   },
 ];
 
+// crea un bloque de las pruebas relacionadas
 describe("showData", () => {
   it("is a function", () => {
     expect(typeof showData).toBe("function");
   });
 
   it("returns `showData`", () => {
-    // console.log(dataResults);
     expect(showData(dataTest)).toEqual(dataResults);
   });
 });

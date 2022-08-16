@@ -9,13 +9,9 @@ import data from "./data/rickandmorty/rickandmorty.js";
 let dataRyM = data;
 let showDatas = showData(dataRyM);
 
-
 // variables del DOM
 let btnInit = document.getElementById("init");
-let acum = "";
-let addDiv;
 let screenAllCharacteres = document.getElementById("screen-all-characteres");
-let sizeData = showDatas.length;
 let btnCurious = document.getElementById("curious-fact");
 let boxCurious = document.getElementById("curious-box");
 let btnHuman = document.getElementById("human");
@@ -28,44 +24,21 @@ let btnRigth = document.getElementById("rigth");
 let btnLeft = document.getElementById("left");
 let btnOrderAZ = document.getElementById("order-a-z");
 let btnOrderZA = document.getElementById("order-z-a");
+let screenMainCharacteres = document.getElementById("screen-main-characteres");
+
+//declaración de variables
+let showRandom1 = showRandom(showDatas);
 let positionStart = -15;
 let positionEnd = 0;
-let screenMainCharacteres = document.getElementById("screen-main-characteres");
-let showRandom1 = showRandom(showDatas);
+let sizeData = showDatas.length;
+let acum = "";
+let addDiv;
 
 //Incializar estilos
 pageStart.style.display = "visible";
 pageCharacteres.style.display = "none";
 btnLeft.style.display = "none";
 boxCurious.style.display = "none";
-
-//arreglo, que almacena los mensajes aleatorios para el usuario
-let datosRan = [
-  " En la serie hay " + showRandom1.male + " personajes masculinos.",
-  " En la serie hay " + showRandom1.female + " personajes femeninos.",
-  " En la serie hay " +
-    showRandom1.genderUndefined +
-    " personajes de género indefinido.",
-  " En la serie hay " + showRandom1.alive + " personajes vivos.",
-  " En la serie hay " + showRandom1.dead + " personajes muertos.",
-  " En la serie hay " +
-    showRandom1.statusUndefined +
-    " personajes de estatus indefinidos",
-];
-
-//función que muestra en una textarea el mensaje aleatorio
-const datesRandom = () => {
-  screenMainCharacteres.style.display = "none";
-  pageStart.style.display = "none";
-  screenAllCharacteres.style.display = "none";
-  btnRigth.style.display = "none";
-  btnLeft.style.display = "none";
-  boxCurious.style.display = "block";
-  let aleatorie = datosRan[Math.floor(Math.random() * datosRan.length)];
-  boxCurious.textContent = aleatorie;
-  return aleatorie;
-};
-btnCurious.addEventListener("click", datesRandom);
 
 //función rigth() con forEach
 const rigth = () => {
@@ -91,7 +64,7 @@ const rigth = () => {
            <img src=${element.image} id=${"img" + index}>
            <span id=${"name" + index}>${element.name}</span>
            </div>
-                `;
+           `;
       acum += addDiv;
       screenAllCharacteres.innerHTML = acum;
     }
@@ -135,7 +108,7 @@ const left = () => {
       addDiv = `
               <div id=${"div" + index} >
               <img src=${element.image} id=${"img" + index}>
-               <span id=${"name" + index}>${element.name}</span>
+              <span id=${"name" + index}>${element.name}</span>
                </div>
               `;
       acum += addDiv;
@@ -228,3 +201,26 @@ let showMainCharacteres = () => {
   }
 };
 btnMainCharacteres.addEventListener("click", showMainCharacteres);
+
+//arreglo, que almacena los mensajes aleatorios para el usuario (cálculo)
+let datosRan = [
+  " En la serie hay " + showRandom1.male + " personajes masculinos.",
+  " En la serie hay " + showRandom1.female + " personajes femeninos.",
+  " En la serie hay " + showRandom1.genderUndefined + " personajes de género indefinido.",
+  " En la serie hay " + showRandom1.alive + " personajes vivos.",
+  " En la serie hay " + showRandom1.dead + " personajes muertos.",
+  " En la serie hay " + showRandom1.statusUndefined + " personajes de estatus indefinidos",
+];
+
+//función que muestra en una textarea el mensaje aleatorio
+const datesRandom = () => {
+  screenMainCharacteres.style.display = "none";
+  pageStart.style.display = "none";
+  screenAllCharacteres.style.display = "none";
+  btnRigth.style.display = "none";
+  btnLeft.style.display = "none";
+  boxCurious.style.display = "block";
+  let aleatorie = datosRan[Math.floor(Math.random() * datosRan.length)];
+  boxCurious.textContent = aleatorie;
+};
+btnCurious.addEventListener("click", datesRandom);

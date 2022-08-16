@@ -37,7 +37,6 @@ export const showOrder = (element) => {
     }
   };
   return element.sort(compareName);
-  // return element;
 };
 
 
@@ -45,13 +44,11 @@ export const showOrder = (element) => {
 //función que filtra especies humanas
 export const filterHuman = (element) => {
   return  element.filter((element) => element.species == "Human");
-  // return filtro;
 };
 
 //función que filtra especies aliens
 export const filterAlien = (element) => {
   return element.filter((element) => element.species == "Alien");
-  // return filtros;
 };
 
 //función que muestra el cálculo
